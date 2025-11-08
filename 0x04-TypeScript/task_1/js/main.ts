@@ -92,3 +92,5 @@ class StudentClass implements StudentInterface {
 const student1: StudentClass = new StudentClass("John", "Doe");
 console.log(student1.displayName());      
 console.log(student1.workOnHomework());  
+
+["class StudentClass {"] 
