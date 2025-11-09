@@ -61,5 +61,6 @@ function teachClass(todayClass: Subjects): string {
   } else {
     return 'Teaching History';
   }
+  "todayClass:Subjects"
 }
 
