@@ -46,6 +46,8 @@ function createEmployee(salary: number | string): Director | Teacher {
   }
   return new Director();
 }
+if (salary < 500)
+
 
 console.log(createEmployee(200));
 console.log(createEmployee(1000));
