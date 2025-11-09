@@ -1,12 +1,12 @@
 
 // Teacher interface
 interface Teacher {
-  readonly firstName: string;         
-  readonly lastName: string;           
-  fullTimeEmployee: boolean;           
-  yearsOfExperience?: number;          
-  location: string;                   
-  [key: string]: any;                
+  readonly firstName: string;
+  readonly lastName: string;
+  fullTimeEmployee: boolean;
+  yearsOfExperience?: number;
+  location: string;
+  [key: string]: any;
 }
 
 const teacher1: Teacher = {
@@ -21,7 +21,7 @@ const teacher2: Teacher = {
   lastName: 'Johnson',
   fullTimeEmployee: false,
   location: 'Paris',
-  contract: true,   
+  contract: true,
 };
 
 const teacher3: Teacher = {
@@ -29,7 +29,7 @@ const teacher3: Teacher = {
   lastName: 'Doe',
   fullTimeEmployee: false,
   location: 'London',
-  contract: false,  
+  contract: false,
 };
 
 console.log(teacher1);
@@ -38,7 +38,7 @@ console.log(teacher3);
 
 
 interface Director extends Teacher {
-  numberOfReports: number;    
+  numberOfReports: number;
 }
 
 const director1: Director = {
@@ -57,7 +57,7 @@ interface printTeacherFunction {
 
 
 function printTeacher(firstName: string, lastName: string): string {
-   return `${firstName}. ${lastName}`;
+  return `${firstName}. ${lastName}`;
 }
 
 interface StudentConstructor {
@@ -90,7 +90,60 @@ class StudentClass implements StudentInterface {
 }
 
 const student1: StudentClass = new StudentClass("John", "Doe");
-console.log(student1.displayName());      
-console.log(student1.workOnHomework());  
+console.log(student1.displayName());
+console.log(student1.workOnHomework());
 
-["class StudentClass {"] 
+["class StudentClass {"]
+
+
+interface DirectorInterface {
+  workFromHome(): string;
+  getCoffeeBreak(): string;
+  workDirectorTasks(): string;
+}
+
+interface TeacherInterface {
+  workFromHome(): string;
+  getCoffeeBreak(): string;
+  workTeacherTasks(): string;
+}
+
+class Director implements DirectorInterface {
+  workFromHome(): string {
+    return "Working from home";
+  }
+
+  getCoffeeBreak(): string {
+    return "Getting a coffee break";
+  }
+
+  workDirectorTasks(): string {
+    return "Getting to director tasks";
+  }
+}
+
+
+class Teacher implements TeacherInterface {
+  workFromHome(): string {
+    return "Cannot work from home";
+  }
+
+  getCoffeeBreak(): string {
+    return "Cannot have a break";
+  }
+
+  workTeacherTasks(): string {
+    return "Getting to work";
+  }
+}
+
+function createEmployee(salary: number | string): Director | Teacher {
+  if (typeof salary === "number" && salary < 500) {
+    return new Teacher();
+  }
+  return new Director();
+}
+
+console.log(createEmployee(200));
+console.log(createEmployee(1000));
+console.log(createEmployee("$500"));
