@@ -20,4 +20,4 @@ CRUD.updateRow(newRowID, updatedRow);
 
 // Call deleteRow
 CRUD.deleteRow(newRowID);
-
+"{ ...row, age: 23 }"
